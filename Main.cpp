@@ -1,4 +1,4 @@
-#include "Markov.h"
+#include "MarkovClUp.h"
 
 
 int main () {
@@ -7,16 +7,10 @@ int main () {
 	char userEnd;
 	
 
-	markov test;
-	test.generateS();
-	test.extract();
-	test.map();
-	test.failFind();
+	Markov test;
 
 	while( userFinished == false){
-
-	test.userCalc();
-
+	test.printDataS();
 	cout << "\n\nEnter y to restart / q to quit ";
 	cin >> userEnd;
 
