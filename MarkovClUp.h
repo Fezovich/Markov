@@ -44,14 +44,27 @@ private:
 
 Markov::Markov(){
 
+	bool userFinished = false;
+	char userEnd;
+
 	makeStringFile();
 	loadStringFile();
 	userMapDef();
 	generateStateMap();
-	if(absorbMap == true){
-	userCalc();
-	}
 
+	while( userFinished == false){
+
+		if(absorbMap == true){
+			userCalc();
+		}
+		printDataS();
+		cout << "\n\nEnter y to restart / q to quit ";
+		cin >> userEnd;
+
+		if( userEnd == 'q'){
+			userFinished = true;
+		}
+	}
 }
 
 void Markov::printDataS(){
@@ -79,7 +92,7 @@ void Markov::makeStringFile(){												// Generates a string of test data for
 
 void Markov::loadStringFile(){															// Opens the previously generated file and increments through the string printing and storing each character to the screen
 	
-	ifstream myfile2 ("BatteryState.txt");													// Temp will not be in final code
+	ifstream myfile2 ("TestDataConv1.csv");													// Temp will not be in final code
 	if (myfile2.is_open()){ 
 		int i = 0;
 		while ( myfile2.good()){
